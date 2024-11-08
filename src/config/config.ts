@@ -1,1 +1,1 @@
-export const BASE_URL = ""
+export const BASE_URL = "https://interviewtesting.onrender.com/v1/users"
