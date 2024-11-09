@@ -60,7 +60,7 @@ function App() {
   const handleOk = async () => {
     setConfirmLoading(true)
 
-    await axios.put(`${apiRoutes.updateUser}/${selectedUser?._id}`).then(res => {
+    await axios.put(`${apiRoutes.updateUser}/${selectedUser?._id}`, userDetails).then(res => {
       console.log("Updated Successfully.", res?.data);
     }).catch(err => {
       console.log("Some error occurred.", err);
