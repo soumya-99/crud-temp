@@ -12,8 +12,8 @@ interface UserTableProps {
 function UserTable({ data, onEditClick, onConfirmDelete, onCancelDelete, confirmLoading }: UserTableProps) {
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mx-52 mt-10">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" className="px-6 py-3">Profile</th>
                         <th scope="col" className="px-6 py-3">Full Name</th>
@@ -25,11 +25,11 @@ function UserTable({ data, onEditClick, onConfirmDelete, onCancelDelete, confirm
                 </thead>
                 <tbody>
                     {data.map((item, i) => (
-                        <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr key={i} className="bg-white border-b">
                             <td className="px-6 py-4">
                                 <img src={item.image} alt="User" className="w-10 h-10 rounded-full" />
                             </td>
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {item.fullName}
                             </th>
                             <td className="px-6 py-4">{item.age}</td>
@@ -42,7 +42,7 @@ function UserTable({ data, onEditClick, onConfirmDelete, onCancelDelete, confirm
                                         e.preventDefault();
                                         onEditClick(item);
                                     }}
-                                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                    className="font-medium text-blue-600 hover:underline"
                                 >
                                     Edit
                                 </a>
@@ -59,7 +59,7 @@ function UserTable({ data, onEditClick, onConfirmDelete, onCancelDelete, confirm
                                 >
                                     <a onClick={(e) => {
                                         e.preventDefault();
-                                    }} className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                                    }} className="font-medium text-red-600 hover:underline">Delete</a>
                                 </Popconfirm>
                             </td>
                         </tr>
