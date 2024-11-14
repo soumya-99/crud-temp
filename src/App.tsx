@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import UserTable from './components/UserTable';
 import EditUserModal from './components/EditUserModal';
 import { Message } from './components/Message';
+import { Spin } from 'antd';
 
 function App() {
   const [users, setUsers] = useState<any[]>([]);
@@ -31,12 +32,14 @@ function App() {
   };
 
   const handleFetchUsers = async () => {
+    setConfirmLoading(true)
     try {
       const res = await axios.get(apiRoutes.fetchUsers);
       setUsers(res?.data?.data);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
+    setConfirmLoading(false)
   };
 
   useEffect(() => {
@@ -96,7 +99,9 @@ function App() {
     <>
       <div className="text-red-900 text-3xl text-center mt-5 mb-2">Table goes here...</div>
       <hr />
-      <UserTable data={users} onEditClick={showModal} onConfirmDelete={handleDeleteUser} onCancelDelete={() => null} confirmLoading={confirmLoading} />
+      <Spin spinning={confirmLoading}>
+        <UserTable data={users} onEditClick={showModal} onConfirmDelete={handleDeleteUser} onCancelDelete={() => null} confirmLoading={confirmLoading} />
+      </Spin>
       <EditUserModal
         isOpen={isModalOpen}
         userDetails={userDetails}
